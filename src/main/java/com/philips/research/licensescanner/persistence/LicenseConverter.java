@@ -9,8 +9,8 @@ import com.philips.research.licensescanner.core.domain.license.License;
 import com.philips.research.licensescanner.core.domain.license.LicenseParser;
 import pl.tlinkowski.annotation.basic.NullOr;
 
-import javax.persistence.AttributeConverter;
-import javax.persistence.Converter;
+import jakarta.persistence.AttributeConverter;
+import jakarta.persistence.Converter;
 
 /**
  * JPA converter for storing Licenses as a string.

@@ -9,17 +9,20 @@ import com.philips.research.licensescanner.core.domain.Detection;
 import com.philips.research.licensescanner.core.domain.license.License;
 import pl.tlinkowski.annotation.basic.NullOr;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 
 @Entity
 @SuppressWarnings("JpaDataSourceORMInspection")
 @Table(name = "detections")
 public class DetectionEntity extends Detection {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
+    @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
     @SuppressWarnings({"unused", "RedundantSuppression"})
     private @NullOr Long id;
 

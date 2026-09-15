@@ -43,9 +43,9 @@ class AnonymousVcsHandlerTest extends VcsHandlerTestBase {
 
     @Test
     void downloadsFromWebURL() {
-        handler.download(tempDir, URI.create("https://example.com/index.html"));
+        handler.download(tempDir, URI.create("https://raw.githubusercontent.com/philips-software/license-scanner/develop/LICENSE.md"));
 
-        assertThat(tempDir.resolve("index.html").toFile()).exists();
+        assertThat(tempDir.resolve("LICENSE.md").toFile()).exists();
     }
 
     @Test

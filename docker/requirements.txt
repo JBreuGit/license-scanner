@@ -61,6 +61,7 @@ regex==2021.4.4
 requests==2.25.1
 saneyaml==0.5.2
 scancode-toolkit==21.3.31
+setuptools==65.7.0
 six==1.16.0
 sortedcontainers==2.4.0
 soupsieve==2.2.1
