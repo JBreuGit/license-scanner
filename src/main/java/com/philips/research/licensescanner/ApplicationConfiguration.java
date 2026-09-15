@@ -8,8 +8,8 @@ package com.philips.research.licensescanner;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.validation.annotation.Validated;
 
-import javax.validation.ValidationException;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.ValidationException;
+import jakarta.validation.constraints.NotNull;
 import java.io.File;
 import java.nio.file.Path;
 

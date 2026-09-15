@@ -10,7 +10,7 @@ import com.philips.research.licensescanner.core.domain.Scan;
 import com.philips.research.licensescanner.core.domain.license.License;
 import pl.tlinkowski.annotation.basic.NullOr;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.net.URI;
 
 /**
@@ -21,7 +21,8 @@ import java.net.URI;
 @Table(name = "scans")
 class ScanEntity extends Scan {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
+    @SequenceGenerator(name = "hibernate_sequence", sequenceName = "hibernate_sequence", allocationSize = 1)
     @SuppressWarnings({"unused", "RedundantSuppression"})
     private @NullOr Long id;
     // Used for querying database on string match

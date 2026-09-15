@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.FileSystemUtils;
 import pl.tlinkowski.annotation.basic.NullOr;
 
-import javax.annotation.PreDestroy;
+import jakarta.annotation.PreDestroy;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;

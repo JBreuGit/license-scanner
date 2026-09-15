@@ -86,7 +86,7 @@ Else it attempts to check out the source code in the following ways:
 
 ## Dependencies
 
-The service requires the Java 11 (or later) runtime environment.
+The service requires the Java 21 (or later) runtime environment.
 
 Scan results are persisted to disk in a local H2 database. The H2 database
 driver is part of the application, so no external dependencies are
@@ -95,7 +95,7 @@ driver is part of the application, so no external dependencies are
 ## Installation
 
 The application is built from source code using the standard Gradle build
-command:
+command (requires a JDK 21 installation):
 
 ```
 gradlew build
@@ -155,6 +155,20 @@ command line on Linux or Mac using:
 (Failed migrations can be manually fixed or removed in the "
 flyway_schema_history"
 table.)
+
+#### Upgrading an existing database from version 0.6.x
+
+Version 0.6.x stored its data in the H2 2.1 file format, which H2 2.2 and
+later refuse to open ("The write format 2 is smaller than the supported
+format 3"). Export the database with the *old* H2 driver before starting the
+upgraded service, then import it with the *new* driver:
+
+    java -cp h2-2.1.214.jar org.h2.tools.Script    -url jdbc:h2:file:~/licenses_db -user user -password password -script licenses_db.sql
+    mv ~/licenses_db.mv.db ~/licenses_db.mv.db.bak
+    java -cp h2-2.3.232.jar org.h2.tools.RunScript -url jdbc:h2:file:~/licenses_db -user user -password password -script licenses_db.sql
+
+Both driver jars can be extracted from the respective service jars
+(`BOOT-INF/lib/h2-<version>.jar`) or downloaded from Maven Central.
 
 ### Docker
 
